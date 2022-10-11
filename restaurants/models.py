@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 # from django.utils import timezone
 
@@ -7,9 +8,9 @@ from django.db import models
 #         return timezone.now()
 
 
-class Post(models.Model):
+class Restaurant(models.Model):
     name = models.CharField(max_length=30)
-    description = models.TextField(max_length=None)
-    opening_time = models.DateField()
-    closing_time = models.DateField()
-    created_at = models.DateField(auto_now=True)
+    description = models.TextField(default="")
+    opening_time = models.TimeField()
+    closing_time = models.TimeField()
+    created_at = models.TimeField(auto_now_add=True)
