@@ -1,4 +1,10 @@
 from django.db import models
+from django.utils import timezone
+
+
+class AutoDateTimeField(models.DateTimeField):
+    def pre_save(self, model_instance, add):
+        return timezone.now()
 
 
 class Post(models.Model):
@@ -6,4 +12,4 @@ class Post(models.Model):
     description = models.TextField()
     opening_time = models.DateField()
     closing_time = models.DateField()
-    created_at = models.DateTimeField()
+    created_at = models.DateField(default=timezone.now)
